@@ -11,7 +11,7 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import mockAnalysisData from "../data/mockAnalysisData";
-import { ocrToPdfPixels } from "../DocumentViewer/utils/coordinateUtils";
+import { ocrToPdfPixels } from "../../utils/coordinateUtils";
 
 
 // Utility: Convert normalized bbox to PDF pixels
