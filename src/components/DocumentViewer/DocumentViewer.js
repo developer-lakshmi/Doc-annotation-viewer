@@ -6,41 +6,11 @@ import DocumentViewerLayout from "../layout/DocumentViewerLayout";
 import { FileText, ArrowLeft } from "lucide-react";
 import AnnotationLayer from "./AnnotationLayer";
 import AnnotationPropertiesPanel from "./AnnotationPropertiesPanel";
-import { Worker, Viewer } from "@react-pdf-viewer/core";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+
 import mockAnalysisData from "../data/mockAnalysisData";
 import { ocrToPdfPixels } from "../../utils/coordinateUtils";
+import PdfViewer from "./PdfViewer";
 
-
-// Utility: Convert normalized bbox to PDF pixels
-function normToPixels(bbox, pdfSize, renderSize) {
-  const x = (bbox.x_center - bbox.width / 2) * renderSize.width;
-  const y = (bbox.y_center - bbox.height / 2) * renderSize.height;
-  const width = bbox.width * renderSize.width;
-  const height = bbox.height * renderSize.height;
-  return { x, y, width, height };
-}
-
-const PdfViewer = ({ fileUrl }) => {
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
-  if (!fileUrl) {
-    return (
-      <div className="flex flex-col items-center justify-center h-full text-gray-500">
-        <FileText size={48} className="mb-4" />
-        <div className="text-center font-medium">No PDF file available</div>
-      </div>
-    );
-  }
-  return (
-    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
-      <div style={{ height: "100%", width: "100%" }}>
-        <Viewer fileUrl={fileUrl} plugins={[defaultLayoutPluginInstance]} />
-      </div>
-    </Worker>
-  );
-};
 
 const DocumentViewer = ({ files }) => {
   const { fileId } = useParams();
@@ -187,14 +157,12 @@ const DocumentViewer = ({ files }) => {
             <div className="flex items-center space-x-2">
               <button className="flex items-center" onClick={handleBack}>
                 <ArrowLeft size={20} className="mr-2" />
-                <h2 className="text-sm font-semibold">Back</h2>
+              
               </button>
               <span className="font-bold text-lg">Doc Viewer</span>
             </div>
           }
-          rightContent={
-            <span className="text-sm sm:text-base">User</span>
-          }
+         
         />
       </div>
       {/* Only this area is scrollable */}

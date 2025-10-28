@@ -1,4 +1,5 @@
 import React from "react";
+import {UserCircle2Icon } from "lucide-react";
 
 const Navbar = () => (
   <nav className="w-full fixed top-0 left-0 right-0 h-14 px-4 flex items-center justify-between z-50
@@ -15,9 +16,9 @@ const Navbar = () => (
         </span>
       </span>
     </div>
-    {/* Right side: placeholder for user or actions */}
+    {/* Right side: user icon */}
     <div className="flex items-center gap-3 sm:gap-4">
-      <span className="text-sm sm:text-base">User</span>
+   👤
     </div>
   </nav>
 );
